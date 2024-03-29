@@ -22,7 +22,6 @@ public class PopulateScript : MonoBehaviour
         essentialCheck = hcls.EC;
         nonEssentialChecksValues = hcls.nonECV;
         essentialCheckValues = hcls.ECV;
-        Debug.Log(nonEssentialChecks[1]);
         Popu();
     }
 
