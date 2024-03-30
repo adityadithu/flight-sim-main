@@ -3,7 +3,7 @@ using UnityEngine;
 public class DescentStateFSM : FlightFSM
 {
     DescentSubState currentSubState;
-
+    private bool flag = false;
     public DescentStateFSM(FlightStateManager stateManager) : base(stateManager) 
     {
         currentSubState = DescentSubState.DecreaseAlt;
@@ -23,7 +23,7 @@ public class DescentStateFSM : FlightFSM
     }
     public override void UpdateSubState()
     {
-        if (currentSubState == DescentSubState.RetractLandingGear)
+        if (currentSubState == DescentSubState.DecreaseAlt)
         {
 
         }
@@ -31,12 +31,12 @@ public class DescentStateFSM : FlightFSM
         {
             currentSubState++;
 
-            stateManager.climbSubStateMap[currentSubState].Initialize();
+            stateManager.descentSubStateMap[currentSubState].Initialize();
 
             switch (currentSubState)
             {
-                case ClimbSubState.RetractLandingGear:
-                    Debug.Log("Retract Landing Gear");
+                case DescentSubState.DecreaseAlt:
+                    Debug.Log("slowly decrease the altitude ");
                     flag = true;
                     break;
             }

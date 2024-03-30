@@ -4,10 +4,11 @@ public class ApproachStateFSM : FlightFSM
 {
 
     ApproachSubState currentSubState;
+    private bool flag = false;
 
     public ApproachStateFSM(FlightStateManager stateManager) : base(stateManager)
     {
-        currentSubState = ApproachSubState.EngageLandingGear;
+        currentSubState = ApproachSubState.ApproachRunway;
         stateManager.approachSubStateMap[currentSubState].Initialize();
         Debug.Log("FLIP");
     }
@@ -23,7 +24,7 @@ public class ApproachStateFSM : FlightFSM
     }
     public override void UpdateSubState()
     {
-        if (currentSubState == ClimbSubState.RetractLandingGear)
+        if (currentSubState == ApproachSubState.ApproachSubState)
         {
 
         }
@@ -31,11 +32,11 @@ public class ApproachStateFSM : FlightFSM
         {
             currentSubState++;
 
-            stateManager.climbSubStateMap[currentSubState].Initialize();
+            stateManager.approachSubStateMap[currentSubState].Initialize();
 
             switch (currentSubState)
             {
-                case ClimbSubState.RetractLandingGear:
+                case ApproachSubState.ApproachRunway:
                     Debug.Log("Retract Landing Gear");
                     flag = true;
                     break;

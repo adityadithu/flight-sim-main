@@ -54,8 +54,9 @@ public enum DescentSubState
 
 public enum ApproachSubState
 {
-    EngageLandingGear,
-    ApproachRunway
+    ApproachSubState,
+    ApproachRunway,
+    EngageLandingGear
 }
 
 public enum LandingSubState

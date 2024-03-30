@@ -4,6 +4,7 @@ public class LandingStateFSM : FlightFSM
 {
 
     LandingSubState currentSubState;
+    private bool flag = false;
 
     public LandingStateFSM(FlightStateManager stateManager) : base(stateManager) 
     {
@@ -23,7 +24,7 @@ public class LandingStateFSM : FlightFSM
     }
     public override void UpdateSubState()
     {
-        if (currentSubState == ClimbSubState.RetractLandingGear)
+        if (currentSubState == LandingSubState.ControlPlane)
         {
 
         }
@@ -31,11 +32,11 @@ public class LandingStateFSM : FlightFSM
         {
             currentSubState++;
 
-            stateManager.climbSubStateMap[currentSubState].Initialize();
+            stateManager.landingSubStateMap[currentSubState].Initialize();
 
             switch (currentSubState)
             {
-                case ClimbSubState.RetractLandingGear:
+                case LandingSubState.ControlPlane:
                     Debug.Log("Retract Landing Gear");
                     flag = true;
                     break;
